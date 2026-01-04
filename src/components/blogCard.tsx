@@ -1,46 +1,26 @@
+import Image from "next/image";
 import Link from "next/link";
 import { BlogMeta } from "@/lib/mdx";
+import { resolvePostImagePath } from "@/lib/postImage";
 
 interface BlogCardProps {
   post: BlogMeta;
 }
 
-// Generate consistent color based on title
-function getGradient(title: string): string {
-  const gradients = [
-    "from-blue-400 to-purple-500",
-    "from-green-400 to-teal-500",
-    "from-orange-400 to-red-500",
-    "from-pink-400 to-purple-500",
-    "from-indigo-400 to-blue-500",
-    "from-yellow-400 to-orange-500",
-  ];
-  const index = title.length % gradients.length;
-  return gradients[index];
-}
-
-// Get emoji based on category
-function getCategoryEmoji(category: string): string {
-  const emojis: Record<string, string> = {
-    technology: "💻",
-    lifestyle: "✨",
-    education: "📚",
-    travel: "✈️",
-    food: "🍳",
-    other: "📝",
-  };
-  return emojis[category] || "📄";
-}
-
 export default function BlogCard({ post }: BlogCardProps) {
-  const gradient = getGradient(post.title);
-  const emoji = getCategoryEmoji(post.category);
+  const imageSrc = resolvePostImagePath(post.image, post.category);
 
   return (
     <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 flex flex-col sm:flex-row hover:shadow-md transition-shadow">
-      {/* Blog Image Placeholder */}
-      <div className={`sm:w-40 h-48 sm:h-auto relative flex-shrink-0 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
-        <span className="text-5xl">{emoji}</span>
+      {/* Blog Image */}
+      <div className="relative h-48 w-full sm:h-auto sm:w-52">
+        <Image
+          src={imageSrc}
+          alt={post.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 208px"
+          className="object-cover"
+        />
       </div>
 
       {/* Blog Content */}

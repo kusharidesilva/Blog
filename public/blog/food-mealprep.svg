@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#22d3ee" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)" />
+  <path d="M280 430h640l-50 90H330z" fill="rgba(255,255,255,0.3)" />
+  <rect x="320" y="200" width="560" height="180" rx="28" fill="rgba(255,255,255,0.45)" />
+  <rect x="350" y="230" width="160" height="120" rx="18" fill="#fcd34d" opacity="0.8" />
+  <rect x="540" y="230" width="160" height="120" rx="18" fill="#4ade80" opacity="0.8" />
+  <rect x="730" y="230" width="120" height="120" rx="18" fill="#fb7185" opacity="0.85" />
+  <text x="600" y="520" fill="#312e81" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="700" text-anchor="middle">
+    Meal Prep
+  </text>
+</svg>

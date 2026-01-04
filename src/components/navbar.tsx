@@ -11,7 +11,8 @@ const navLinks = [
   { name: "Lifestyle", href: "/lifestyle" },
   { name: "Education", href: "/education" },
   { name: "Travel", href: "/travel" },
-  { name: "Other", href: "/other" },
+  { name: "Food", href: "/food" },
+  { name: "News & Trends", href: "/news&trends" },
 ];
 
 export default function Navbar() {
@@ -24,8 +25,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-[#f5f2fb]">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-8 py-5">
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-5">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image

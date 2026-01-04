@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <linearGradient id="grad" x1="0%" y1="100%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#0f766e" />
+    <stop offset="100%" stop-color="#22d3ee" />
+  </linearGradient>
+  <rect width="1200" height="630" fill="url(#grad)" />
+  <path d="M280 420h640l-80 120H360z" fill="rgba(15,23,42,0.3)" />
+  <text x="600" y="300" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="120" font-weight="700" letter-spacing="-6" text-anchor="middle">
+    $ $ $
+  </text>
+  <text x="600" y="540" fill="#99f6e4" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="700" text-anchor="middle">
+    Financial Planning
+  </text>
+</svg>

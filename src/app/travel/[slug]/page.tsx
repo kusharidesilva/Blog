@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
+import { resolvePostImagePath } from "@/lib/postImage";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BlogPostPageProps {
@@ -24,6 +26,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const coverImage = resolvePostImagePath(post.image, post.category);
+
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
@@ -43,8 +47,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           <span>{new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</span>
         </div>
 
-        <div className="relative h-48 md:h-64 rounded-xl overflow-hidden mb-8 bg-gradient-to-r from-sky-500 to-indigo-600 flex items-center justify-center">
-          <span className="text-6xl">✈️</span>
+        <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-xl bg-gray-200">
+          <Image
+            src={coverImage}
+            alt={post.title}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
         </div>
 
         <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-yellow-500">

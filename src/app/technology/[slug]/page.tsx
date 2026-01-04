@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
+import { resolvePostImagePath } from "@/lib/postImage";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
 import Link from "next/link";
 
 interface BlogPostPageProps {
@@ -23,6 +25,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) {
     notFound();
   }
+
+  const coverImage = resolvePostImagePath(post.image, post.category);
 
   return (
     <div className="min-h-screen bg-white">
@@ -45,8 +49,15 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         </div>
 
         {/* Featured Banner */}
-        <div className="relative h-48 md:h-64 rounded-xl overflow-hidden mb-8 bg-gradient-to-r from-blue-500 to-purple-600 flex items-center justify-center">
-          <span className="text-6xl">💻</span>
+        <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-xl bg-gray-200">
+          <Image
+            src={coverImage}
+            alt={post.title}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
         </div>
 
         {/* Content */}

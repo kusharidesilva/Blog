@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#facc15" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grad)" />
+  <ellipse cx="600" cy="420" rx="340" ry="120" fill="rgba(255,255,255,0.3)" />
+  <rect x="420" y="200" width="360" height="240" rx="60" fill="rgba(255,255,255,0.4)" />
+  <ellipse cx="600" cy="200" rx="200" ry="90" fill="#fde68a" />
+  <text x="600" y="540" fill="#7c2d12" font-family="Segoe UI, Arial, sans-serif" font-size="68" font-weight="700" text-anchor="middle">
+    Baking Basics
+  </text>
+</svg>
