@@ -25,7 +25,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          {/* Hero Illustration */}
+          {/* Hero image */}
           <div className="flex-1 flex justify-center lg:justify-end">
             <Image
               src="/hero.png"
