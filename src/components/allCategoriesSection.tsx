@@ -11,7 +11,7 @@ const categories = [
 
 export default function AllCategoriesSection() {
   return (
-    <section className="py-16 bg-white">
+    <section id="categories" className="py-16 bg-white">
       <div className="mx-auto max-w-7xl px-6">
         {/* Section Title */}
         <div className="flex justify-center mb-12">
