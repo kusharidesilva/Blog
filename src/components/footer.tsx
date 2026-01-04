@@ -7,7 +7,7 @@ const quickLinks = [
   { name: "Education", href: "/education" },
   { name: "Travel", href: "/travel" },
   { name: "Food", href: "/food" },
-  { name: "News & Trends", href: "/news" },
+  { name: "News & Trends", href: "/news&trends" },
 ];
 
 export default function Footer() {
