@@ -2,10 +2,10 @@ import BlogCard from "./blogCard";
 import { getAllPosts } from "@/lib/mdx";
 
 const favouritePostKeys = new Set([
-  "technology/future-of-ai",
-  "lifestyle/morning-routine",
-  "education/online-learning",
-  "travel/top-destinations",
+  "technology/cloud-computing-guide",
+  "lifestyle/healthy-eating",
+  "education/career-path",
+  "travel/solo-travel",
 ]);
 
 export default function FavouritesSection() {
