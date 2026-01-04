@@ -14,17 +14,17 @@ export default function FavouritesSection() {
   );
 
   return (
-    <section className="py-16 bg-gray-50 mb-12">
+    <section className="py-20 bg-gray-50 mb-1">
       <div className="mx-auto max-w-7xl px-6">
-        {/* Section Title */}
+        {/* Title */}
         <div className="flex justify-center mb-12">
           <span className="bg-blue-900 text-white px-6 py-2 rounded-full text-sm font-medium">
             Favourites
           </span>
         </div>
 
-        {/* Favourites Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {/* Favourites cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {favouritePosts.length > 0 ? (
             favouritePosts.map((post) => (
               <BlogCard key={`${post.category}-${post.slug}`} post={post} />

@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const categories = [
-  { name: "Technology", icon: "💻", bgColor: "bg-purple-100", iconBg: "bg-purple-200" },
-  { name: "Lifestyle", icon: "❤️", bgColor: "bg-red-50", iconBg: "bg-red-100" },
-  { name: "Education", icon: "📚", bgColor: "bg-teal-100", iconBg: "bg-teal-200" },
-  { name: "Travel", icon: "🚶", bgColor: "bg-blue-50", iconBg: "bg-blue-100" },
-  { name: "Food", icon: "🍽️", bgColor: "bg-purple-100", iconBg: "bg-purple-200" },
-  { name: "News & Trends", icon: "📰", bgColor: "bg-red-50", iconBg: "bg-red-100" },
+  { name: "Technology", slug: "technology", icon: "💻", bgColor: "bg-purple-100", iconBg: "bg-purple-200" },
+  { name: "Lifestyle", slug: "lifestyle", icon: "❤️", bgColor: "bg-red-50", iconBg: "bg-red-100" },
+  { name: "Education", slug: "education", icon: "📚", bgColor: "bg-teal-100", iconBg: "bg-teal-200" },
+  { name: "Travel", slug: "travel", icon: "🚶", bgColor: "bg-blue-50", iconBg: "bg-blue-100" },
+  { name: "Food", slug: "food", icon: "🍽️", bgColor: "bg-purple-100", iconBg: "bg-purple-200" },
+  { name: "News & Trends", slug: "news&trends", icon: "📰", bgColor: "bg-red-50", iconBg: "bg-red-100" },
 ];
 
 export default function AllCategoriesSection() {
@@ -25,7 +25,7 @@ export default function AllCategoriesSection() {
           {categories.map((category) => (
             <Link
               key={category.name}
-              href={`/category/${category.name.toLowerCase().replace(/ & /g, "-")}`}
+              href={`/${category.slug}`}
               className={`flex items-center gap-4 ${category.bgColor} rounded-full px-3 py-2 transition-transform hover:scale-105`}
             >
               <div className={`${category.iconBg} w-15 h-15 rounded-full flex items-center justify-center text-2xl`}>

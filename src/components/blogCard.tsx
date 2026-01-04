@@ -11,19 +11,19 @@ export default function BlogCard({ post }: BlogCardProps) {
   const imageSrc = resolvePostImagePath(post.image, post.category);
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 flex flex-col sm:flex-row hover:shadow-md transition-shadow">
-      {/* Blog Image */}
+    <div className="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100 flex flex-col sm:flex-row hover:shadow-md transition-shadow hover:scale-105 duration-500">
+      {/* Image */}
       <div className="relative h-48 w-full sm:h-auto sm:w-52">
         <Image
           src={imageSrc}
           alt={post.title}
           fill
-          sizes="(max-width: 640px) 100vw, 208px"
+          sizes="(max-width: 700px) 100vw, 208px"
           className="object-cover"
         />
       </div>
 
-      {/* Blog Content */}
+      {/* Content */}
       <div className="p-6 flex flex-col justify-between flex-1">
         <div>
           <h3 className="font-bold text-gray-900 mb-2 uppercase">{post.title}</h3>
