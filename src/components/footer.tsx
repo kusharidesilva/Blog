@@ -100,6 +100,7 @@ export default function Footer() {
             © BlogNest 2025 by Kushari Desilva | All Right Reserved
           </p>
         </div>
+        
       </div>
     </footer>
   );

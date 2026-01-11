@@ -28,9 +28,7 @@ export interface BlogMeta {
 // Get all categories
 export function getCategories(): string[] {
   const categories = fs.readdirSync(contentDirectory);
-  return categories.filter((cat) =>
-    fs.statSync(path.join(contentDirectory, cat)).isDirectory()
-  );
+  return categories.filter((cat) => fs.statSync(path.join(contentDirectory, cat)).isDirectory());
 }
 
 // Get all posts for a specific category
@@ -109,4 +107,17 @@ export function getPostSlugs(category: string): string[] {
 
   const files = fs.readdirSync(categoryPath).filter((file) => file.endsWith(".mdx"));
   return files.map((file) => file.replace(".mdx", ""));
+}
+
+// Resolve post image path with fallback
+export function resolvePostImagePath(image: string | undefined, category: string): string {
+  if (image) {
+    const trimmed = image.startsWith("/") ? image.slice(1) : image;
+    const filePath = path.join(process.cwd(), "public", trimmed);
+    if (fs.existsSync(filePath)) {
+      return image;
+    }
+  }
+
+  return "/hero.png";
 }

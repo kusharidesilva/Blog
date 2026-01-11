@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
-import { resolvePostImagePath } from "@/lib/postImage";
+import { getPostBySlug, getPostSlugs, resolvePostImagePath } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
