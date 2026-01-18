@@ -1,9 +1,8 @@
 import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { getPostBySlug, getPostSlugs } from "@/lib/mdx";
-import { resolvePostImagePath } from "@/lib/postImage";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { compileMdxToComponent, getPostBySlug, getPostSlugs, resolvePostImagePath } from "@/lib/mdx";
+import { mdxComponents } from "@/components/mdx-components";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,6 +26,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const coverImage = resolvePostImagePath(post.image, post.category);
+  const { Content } = await compileMdxToComponent(post.content);
 
   return (
     <div className="min-h-screen bg-white">
@@ -62,7 +62,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
         {/* Content */}
         <div className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-yellow-500">
-          <MDXRemote source={post.content} />
+          <Content components={mdxComponents} />
         </div>
       </article>
 
