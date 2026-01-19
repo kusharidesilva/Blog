@@ -1,6 +1,11 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
+import type { MDXComponents } from "mdx/types";
+import type { ComponentType } from "react";
+import * as jsxRuntimeDev from "react/jsx-dev-runtime";
+import * as jsxRuntimeProd from "react/jsx-runtime";
 
 const contentDirectory = path.join(process.cwd(), "src/content");
 
@@ -25,12 +30,15 @@ export interface BlogMeta {
   author?: string;
 }
 
+export interface CompiledMdx {
+  Content: ComponentType<{ components?: MDXComponents }>;
+  frontmatter: Record<string, unknown>;
+}
+
 // Get all categories
 export function getCategories(): string[] {
   const categories = fs.readdirSync(contentDirectory);
-  return categories.filter((cat) =>
-    fs.statSync(path.join(contentDirectory, cat)).isDirectory()
-  );
+  return categories.filter((cat) => fs.statSync(path.join(contentDirectory, cat)).isDirectory());
 }
 
 // Get all posts for a specific category
@@ -109,4 +117,30 @@ export function getPostSlugs(category: string): string[] {
 
   const files = fs.readdirSync(categoryPath).filter((file) => file.endsWith(".mdx"));
   return files.map((file) => file.replace(".mdx", ""));
+}
+
+// Resolve post image path with fallback
+export function resolvePostImagePath(image: string | undefined, category: string): string {
+  if (image) {
+    const trimmed = image.startsWith("/") ? image.slice(1) : image;
+    const filePath = path.join(process.cwd(), "public", trimmed);
+    if (fs.existsSync(filePath)) {
+      return image;
+    }
+  }
+
+  return "/hero.png";
+}
+
+export async function compileMdxToComponent(source: string): Promise<CompiledMdx> {
+  const { compiledSource, frontmatter, scope } = await serialize(source, undefined, true);
+  const jsxRuntime = process.env.NODE_ENV === "production" ? jsxRuntimeProd : jsxRuntimeDev;
+  const fullScope = Object.assign({
+    opts: jsxRuntime,
+  }, { frontmatter }, scope);
+  const keys = Object.keys(fullScope);
+  const values = Object.values(fullScope);
+  const hydrateFn = Reflect.construct(Function, keys.concat(`${compiledSource}`));
+  const Content = hydrateFn.apply(hydrateFn, values).default as ComponentType<{ components?: MDXComponents }>;
+  return { Content, frontmatter };
 }

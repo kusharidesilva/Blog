@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BlogMeta } from "@/lib/mdx";
-import { resolvePostImagePath } from "@/lib/postImage";
+import { BlogMeta, resolvePostImagePath } from "@/lib/mdx";
 
 interface BlogCardProps {
   post: BlogMeta;
